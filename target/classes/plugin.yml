@@ -1,0 +1,10 @@
+name: FBP
+version: '1.6.1'
+main: smitegee.femiteboxplugin.FMB
+api-version: '1.19'
+
+commands:
+    femiteboxplugin:
+      description: Powerful enough to get someone an item
+      permission: femiteboxplugin.commands.femiteboxplugin
+      permission-message: Sorry! Isnt available right now
