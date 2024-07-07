@@ -29,11 +29,12 @@ public class lsword implements Listener {
 
         if (player.getInventory().getItemInMainHand().getType().equals(Material.NETHERITE_AXE) &&
                 player.getInventory().getItemInMainHand().containsEnchantment(Enchantment.FIRE_ASPECT) && player.getInventory().getItemInMainHand().getItemMeta().hasDisplayName() &&
-                player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals(ChatColor.BLACK + "" + ChatColor.BOLD + "Zyphor's" + ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "Axe")) {
+                player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals(ChatColor.BLACK + "" + ChatColor.BOLD + "Zyphor's" + ChatColor.DARK_AQUA + "" + ChatColor.BOLD + " Axe")) {
 
             event.getRightClicked().getWorld().strikeLightning(event.getRightClicked().getLocation());
             event.getRightClicked().getWorld().strikeLightning(event.getRightClicked().getLocation());
             event.getRightClicked().getWorld().strikeLightning(event.getRightClicked().getLocation());
+            event.getRightClicked().getWorld().createExplosion(event.getRightClicked().getLocation(), 5);
         }
 
 

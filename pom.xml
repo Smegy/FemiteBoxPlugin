@@ -6,7 +6,7 @@
 
   <groupId>smitegee</groupId>
   <artifactId>CMP-FemiteBox-paper-1.19.2-beta-ver-</artifactId>
-  <version>1.6.1</version>
+  <version>1.6.2</version>
   <packaging>jar</packaging>
 
   <name>femiteboxplugin</name>

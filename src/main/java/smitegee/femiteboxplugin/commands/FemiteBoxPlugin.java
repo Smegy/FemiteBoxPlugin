@@ -24,7 +24,7 @@ public class FemiteBoxPlugin implements CommandExecutor {
         Player player = (Player) sender;
 
 
-        String ver = ChatColor.AQUA + "Running Version 1.6.1";
+        String ver = ChatColor.AQUA + " Running Version 1.6.2";
 
 
 
@@ -69,7 +69,7 @@ public class FemiteBoxPlugin implements CommandExecutor {
         lore.add(ChatColor.GRAY + "Found it on the ground, dont think i will find the owner");
         lore.add("");
         lore.add("");
-        lore.add(ChatColor.DARK_PURPLE + "" + ChatColor.BOLD + "[MYTHICAL]");
+        lore.add(ChatColor.GOLD + "" + ChatColor.BOLD + "[LEGENDARY]");
         im2.setLore(lore);
         item2.setItemMeta(im2);
 
@@ -112,41 +112,39 @@ public class FemiteBoxPlugin implements CommandExecutor {
 
         //GetItem
 
-        if (args.length > 0 && args[0].equalsIgnoreCase("getItem")) {
+        if (args[0].equalsIgnoreCase("getItem")) {
 
 
-            if (args.length > 0 && args[1].equalsIgnoreCase("weapon")) {
+            if (args[1].equalsIgnoreCase("weapon")) {
 
 
-                if (args.length > 0 && args[2].equalsIgnoreCase("lsword")) {
+                if (args[2].equalsIgnoreCase("lsword")) {
                     player.getInventory().addItem(item2);
                     sender.sendMessage(ChatColor.AQUA + "> Got Lightning Sword");
                 }
 
-                if (args.length > 0 && args[2].equalsIgnoreCase("tntbow")) {
+                if (args[2].equalsIgnoreCase("tntbow")) {
                     player.getInventory().addItem(item);
                     sender.sendMessage(ChatColor.AQUA + "> Got TNT Bow");
                 }
 
-                if (args.length > 0 && args[2].equalsIgnoreCase("zyphor")) {
+                if (args[2].equalsIgnoreCase("zyphor")) {
                     player.getInventory().addItem(item3);
                     sender.sendMessage(ChatColor.AQUA + "> Got Zyphor's Axe");
                 }
 
-                if (args.length > 0 && args[1].equalsIgnoreCase("weapon")) {
-                    sender.sendMessage(ChatColor.DARK_GREEN +"[FMB]" + ver);
-                    sender.sendMessage(ChatColor.AQUA + "> /fbp weapon lsword");
-                    sender.sendMessage(ChatColor.AQUA + "> /fbp weapon tntbow");
-                    sender.sendMessage(ChatColor.AQUA + "> /fbp weapon zyphor");
-                }
 
 
-            }
-
-            if (args.length > 0 && args[0].equalsIgnoreCase("getItem")) {
+            } else {
                 sender.sendMessage(ChatColor.DARK_GREEN +"[FMB]" + ver);
-                sender.sendMessage(ChatColor.AQUA + "> /fbp weapon");
+                sender.sendMessage(ChatColor.AQUA + "> /fbp getItem weapon lsword");
+                sender.sendMessage(ChatColor.AQUA + "> /fbp getItem weapon tntbow");
+                sender.sendMessage(ChatColor.AQUA + "> /fbp getItem weapon zyphor");
             }
+
+        } else {
+            sender.sendMessage(ChatColor.DARK_GREEN +"[FMB]" + ver);
+            sender.sendMessage(ChatColor.AQUA + "> /fbp getItem weapon");
         }
 
 
