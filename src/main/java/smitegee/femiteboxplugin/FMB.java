@@ -23,6 +23,7 @@ public class FMB extends JavaPlugin{
         Bukkit.getPluginManager().addPermission(new Permission("femiteboxplugin.*"));
         Bukkit.getPluginManager().addPermission(new Permission("femiteboxplugin.fmb.admin.getitem.weapon"));
         Bukkit.getPluginManager().addPermission(new Permission("femiteboxplugin.fmb.admin.zyphorsaxe"));
+        Bukkit.getPluginManager().addPermission(new Permission("femiteboxplugin.fmb.showitem"));
 
     }
 }

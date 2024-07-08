@@ -24,7 +24,7 @@ public class FemiteBoxPlugin implements CommandExecutor {
         Player player = (Player) sender;
 
 
-        String ver = ChatColor.AQUA + " Running Version 1.6.2";
+        String ver = ChatColor.AQUA + " Running Version 1.6.3";
 
 
 
@@ -88,8 +88,8 @@ public class FemiteBoxPlugin implements CommandExecutor {
         lore3.add(ChatColor.GRAY+"Enchantments");
         lore3.add(ChatColor.AQUA + "     Fire Aspect X");
         lore3.add(ChatColor.AQUA + "     Sharpness XXVIII");
-        lore3.add(ChatColor.AQUA + "     Explosion V");
-        lore3.add(ChatColor.AQUA + "     Lightning III");
+        lore3.add(ChatColor.AQUA + "     Explosion X");
+        lore3.add(ChatColor.AQUA + "     Lightning V");
         lore3.add("");
         lore3.add("");
         lore3.add(ChatColor.GRAY + "Tried to find up what Zyphor means, could not find it.");
@@ -112,27 +112,26 @@ public class FemiteBoxPlugin implements CommandExecutor {
 
         //GetItem
 
-        if (args[0].equalsIgnoreCase("getItem")) {
+        if (args.length >= 1 && args[0].equalsIgnoreCase("getItem")) {
 
 
-            if (args[1].equalsIgnoreCase("weapon")) {
+            if (args.length >= 2 && args[1].equalsIgnoreCase("weapon")) {
 
 
-                if (args[2].equalsIgnoreCase("lsword")) {
+                if (args.length >= 3 && args[2].equalsIgnoreCase("lsword")) {
                     player.getInventory().addItem(item2);
                     sender.sendMessage(ChatColor.AQUA + "> Got Lightning Sword");
                 }
 
-                if (args[2].equalsIgnoreCase("tntbow")) {
+                if (args.length >= 3 && args[2].equalsIgnoreCase("tntbow")) {
                     player.getInventory().addItem(item);
                     sender.sendMessage(ChatColor.AQUA + "> Got TNT Bow");
                 }
 
-                if (args[2].equalsIgnoreCase("zyphor")) {
+                if (args.length >= 3 && args[2].equalsIgnoreCase("zyphor")) {
                     player.getInventory().addItem(item3);
                     sender.sendMessage(ChatColor.AQUA + "> Got Zyphor's Axe");
                 }
-
 
 
             } else {
@@ -147,12 +146,10 @@ public class FemiteBoxPlugin implements CommandExecutor {
             sender.sendMessage(ChatColor.AQUA + "> /fbp getItem weapon");
         }
 
-
-
-
-
-
+        if (args.length >= 1 && args[0].equalsIgnoreCase("showItem")) {
+            Material playeritem = player.getInventory().getItemInMainHand().getType();
+            sender.sendMessage(ChatColor.AQUA + "> Your Item: " + playeritem);
+        }
         return false;
     }
-
 }

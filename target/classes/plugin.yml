@@ -1,5 +1,5 @@
 name: FBP
-version: '1.6.2'
+version: '1.6.3'
 main: smitegee.femiteboxplugin.FMB
 api-version: '1.19'
 
@@ -8,3 +8,4 @@ commands:
       description: Powerful enough to get someone an item
       permission: femiteboxplugin.commands.femiteboxplugin
       permission-message: Sorry! Isnt available right now
+      aliases: [fbp, fmb, fmbp, fmbp]

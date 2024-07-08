@@ -17,7 +17,7 @@ public class zyphorsaxe implements Listener {
             Entity player = (Player) entity;
             Entity vindicator = (Vindicator) attacker;
             player.setGlowing(true);
-            player.getWorld().createExplosion(player.getLocation(), 5);
+            player.getWorld().createExplosion(player.getLocation(), 10);
 
         }
     }

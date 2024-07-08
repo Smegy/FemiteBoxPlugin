@@ -34,7 +34,9 @@ public class lsword implements Listener {
             event.getRightClicked().getWorld().strikeLightning(event.getRightClicked().getLocation());
             event.getRightClicked().getWorld().strikeLightning(event.getRightClicked().getLocation());
             event.getRightClicked().getWorld().strikeLightning(event.getRightClicked().getLocation());
-            event.getRightClicked().getWorld().createExplosion(event.getRightClicked().getLocation(), 5);
+            event.getRightClicked().getWorld().strikeLightning(event.getRightClicked().getLocation());
+            event.getRightClicked().getWorld().strikeLightning(event.getRightClicked().getLocation());
+            event.getRightClicked().getWorld().createExplosion(event.getRightClicked().getLocation(), 10);
         }
 
 
