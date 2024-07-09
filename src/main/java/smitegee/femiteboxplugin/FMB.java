@@ -5,6 +5,7 @@ import org.bukkit.permissions.Permission;
 import org.bukkit.plugin.java.JavaPlugin;
 import smitegee.femiteboxplugin.commands.FemiteBoxPlugin;
 import smitegee.femiteboxplugin.events.BowTNTEvent;
+import smitegee.femiteboxplugin.events.icebow;
 import smitegee.femiteboxplugin.events.lsword;
 import smitegee.femiteboxplugin.events.zyphorsaxe;
 
@@ -16,14 +17,16 @@ public class FMB extends JavaPlugin{
         getCommand("femiteboxplugin").setExecutor(new FemiteBoxPlugin());
         getServer().getPluginManager().registerEvents(new lsword(), this);
         getServer().getPluginManager().registerEvents(new zyphorsaxe(), this);
+        getServer().getPluginManager().registerEvents(new icebow(), this);
 
         //Permissions
 
         Bukkit.getPluginManager().addPermission(new Permission("femiteboxplugin.fmb.admin.likeluckperms.menu"));
         Bukkit.getPluginManager().addPermission(new Permission("femiteboxplugin.*"));
-        Bukkit.getPluginManager().addPermission(new Permission("femiteboxplugin.fmb.admin.getitem.weapon"));
+        Bukkit.getPluginManager().addPermission(new Permission("femiteboxplugin.fmb.admin.getitem"));
         Bukkit.getPluginManager().addPermission(new Permission("femiteboxplugin.fmb.admin.zyphorsaxe"));
         Bukkit.getPluginManager().addPermission(new Permission("femiteboxplugin.fmb.showitem"));
+        Bukkit.getPluginManager().addPermission(new Permission("femiteboxplugin.fmb.bypassarrow"));
 
     }
 }

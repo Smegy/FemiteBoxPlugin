@@ -1,5 +1,5 @@
 name: FBP
-version: '1.6.3'
+version: '1.6.4'
 main: smitegee.femiteboxplugin.FMB
 api-version: '1.19'
 

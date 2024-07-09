@@ -12,12 +12,18 @@ public class zyphorsaxe implements Listener {
 
         if (attacker instanceof Vindicator && entity instanceof Player) {
 
-            entity.getLocation().getWorld().strikeLightning(entity.getLocation());
 
-            Entity player = (Player) entity;
-            Entity vindicator = (Vindicator) attacker;
+
+            Player player = (Player) entity;
+            Vindicator vindicator = (Vindicator) attacker;
             player.setGlowing(true);
             player.getWorld().createExplosion(player.getLocation(), 10);
+
+            entity.getLocation().getWorld().strikeLightning(entity.getLocation());
+            entity.getLocation().getWorld().strikeLightning(entity.getLocation());
+            entity.getLocation().getWorld().strikeLightning(entity.getLocation());
+            entity.getLocation().getWorld().strikeLightning(entity.getLocation());
+            entity.getLocation().getWorld().strikeLightning(entity.getLocation());
 
         }
     }

@@ -3,6 +3,7 @@ package smitegee.femiteboxplugin.events;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -13,7 +14,6 @@ public class lsword implements Listener {
 
     @EventHandler
     public void onRightClick(PlayerInteractAtEntityEvent event) {
-        if (!(event.getRightClicked() instanceof Player)) return;
         ItemStack item = event.getPlayer().getInventory().getItemInMainHand();
 
         Player player = event.getPlayer();
