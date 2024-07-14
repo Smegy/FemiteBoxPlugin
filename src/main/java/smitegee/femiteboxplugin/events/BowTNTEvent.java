@@ -10,12 +10,13 @@ import org.bukkit.event.entity.ProjectileHitEvent;
 
 public class BowTNTEvent implements Listener {
 
+
     @EventHandler
     public void onProjectileHit(ProjectileHitEvent event) {
+        Arrow arrow = (Arrow) event.getEntity();
+        Player player = (Player) arrow.getShooter();
         if (event.getEntity() instanceof Arrow) {
-            Arrow arrow = (Arrow) event.getEntity();
             if (arrow.getShooter() instanceof Player) {
-                Player player = (Player) arrow.getShooter();
                 if (player.getInventory().getItemInMainHand().getItemMeta().hasDisplayName() &&
                         player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals(ChatColor.RED + "TNT Bow")) {
 

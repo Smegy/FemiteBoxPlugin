@@ -15,6 +15,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class FemiteBoxPlugin implements CommandExecutor {
 
@@ -25,7 +26,7 @@ public class FemiteBoxPlugin implements CommandExecutor {
         Player player = (Player) sender;
 
 
-        String ver = ChatColor.AQUA + " Running Version 1.6.4";
+        String ver = ChatColor.AQUA + " Running Version 1.8.2";
 
 
 
@@ -39,8 +40,8 @@ public class FemiteBoxPlugin implements CommandExecutor {
         //Lore
         List<String> lore1 = new ArrayList<>();
         lore1.add(ChatColor.GRAY + "Enchantments");
-        lore1.add(ChatColor.AQUA + "     Infinite I");
-        lore1.add(ChatColor.AQUA + "     Explosion I");
+        lore1.add(ChatColor.GOLD + "     Infinite I");
+        lore1.add(ChatColor.GOLD + "     Explosion I");
         lore1.add("");
         lore1.add("");
         lore1.add(ChatColor.GRAY + "My father gave this bow to me, said its a family tradition to give it up.");
@@ -64,7 +65,7 @@ public class FemiteBoxPlugin implements CommandExecutor {
         //Lore
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.GRAY+"Enchantments");
-        lore.add(ChatColor.AQUA+"     Lightning I");
+        lore.add(ChatColor.GOLD+"     Lightning I");
         lore.add("");
         lore.add("");
         lore.add(ChatColor.GRAY + "Found it on the ground, dont think i will find the owner");
@@ -101,26 +102,6 @@ public class FemiteBoxPlugin implements CommandExecutor {
         itemMeta3.setLore(lore3);
         item3.setItemMeta(itemMeta3);
 
-        //Ice Bow,
-        ItemStack iceBow = new ItemStack(Material.BOW, 1);
-        ItemMeta iceBowMeta = iceBow.getItemMeta();
-        iceBowMeta.setDisplayName(ChatColor.BLUE + "" + ChatColor.BOLD + "Ice Bow");
-        iceBowMeta.addEnchant(Enchantment.ARROW_DAMAGE, 2, true);
-        iceBowMeta.addEnchant(Enchantment.DAMAGE_ALL, 1, true);
-        iceBowMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        iceBowMeta.setUnbreakable(true);
-        iceBow.setItemMeta(iceBowMeta);
-
-
-
-        //Frost Blade
-        ItemStack fb = new ItemStack(Material.DIAMOND_SWORD, 1);
-        ItemMeta fbm = fb.getItemMeta();
-        fbm.setDisplayName(ChatColor.AQUA + "" + ChatColor.BOLD + "Frost Blade");
-        fbm.addEnchant(Enchantment.DAMAGE_ALL, 5, true);
-        fbm.setUnbreakable(true);
-        fb.setItemMeta(fbm);
-
 
 
 
@@ -135,8 +116,20 @@ public class FemiteBoxPlugin implements CommandExecutor {
             sender.sendMessage(ChatColor.DARK_GREEN +"[FMB]" + ver);
         }
 
-        //GetItem
+        //Help subcommand
+        if (!player.hasPermission("femiteboxplugin.fmb.admin.help")) return true;
 
+        if (args.length >= 1 && args[0].equalsIgnoreCase("help")) {
+            sender.sendMessage(ChatColor.DARK_GREEN +"[FMB]" + ver);
+            sender.sendMessage(ChatColor.AQUA + "> /fmb getItem weapon lsword");
+            sender.sendMessage(ChatColor.AQUA + "> /fmb getItem weapon tntbow");;
+            sender.sendMessage(ChatColor.AQUA + "> /fmb getItem weapon zyphor");
+            sender.sendMessage(ChatColor.AQUA + "> /fmb getItem weapon weapon");
+        }
+
+
+
+        //GetItem
         if (!player.hasPermission("femiteboxplugin.fmb.admin.getitem")) return true;
 
         if (args.length >= 1 && args[0].equalsIgnoreCase("getItem")) {
@@ -155,15 +148,6 @@ public class FemiteBoxPlugin implements CommandExecutor {
                     sender.sendMessage(ChatColor.AQUA + "> Got TNT Bow");
                 }
 
-                if (args.length >= 3 && args[2].equalsIgnoreCase("fb")) {
-                    player.getInventory().addItem(fb);
-                    sender.sendMessage(ChatColor.AQUA + "> Got Frost Blade");
-                }
-
-                if (args.length >= 3 && args[2].equalsIgnoreCase("icebow")) {
-                    player.getInventory().addItem(iceBow);
-                    sender.sendMessage(ChatColor.AQUA + "> Got Ice Bow");
-                }
 
                 if (args.length >= 3 && args[2].equalsIgnoreCase("zyphor")) {
                     player.getInventory().addItem(item3);
@@ -184,25 +168,16 @@ public class FemiteBoxPlugin implements CommandExecutor {
 
 
         }
-        if (args.length >= 3 && args[0].equalsIgnoreCase("getItem")) {
-            sender.sendMessage(ChatColor.DARK_GREEN +"[FMB]" + ver);
-            sender.sendMessage(ChatColor.AQUA + "> /fbp getItem weapon");
-
-
-        }
 
 
         if (args.length >= 1 && args[0].equalsIgnoreCase("showItem") && player.hasPermission("femiteboxplugin.fmb.showitem")) {
-            String playeritem = player.getInventory().getItemInMainHand().getItemMeta().getDisplayName();
+            ItemStack playeritem = player.getInventory().getItemInMainHand();
 
-            sender.sendMessage(ChatColor.LIGHT_PURPLE + "[FMB]" + ChatColor.RED + "Your Item:"  + ChatColor.GOLD + playeritem);
             sender.sendMessage("");
-            Bukkit.broadcastMessage(ChatColor.AQUA + "[" + player.getName() + "]" + " has shown their item: " + playeritem);
-        } else {
-            // message to send if it doesn't work
-            sender.sendMessage(ChatColor.DARK_GREEN +"[FMB]" + ver);
-            sender.sendMessage(ChatColor.RED +"The sub-command you used isnt just made for you");
+            Bukkit.broadcastMessage(ChatColor.AQUA + player.getName() + " has shown their item: " +playeritem.getItemMeta().getDisplayName());
+
         }
+
 
 
         return false;

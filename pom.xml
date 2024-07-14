@@ -5,8 +5,8 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>smitegee</groupId>
-  <artifactId>CMP-FemiteBox-paper-1.19.2-beta-ver-</artifactId>
-  <version>1.6.4</version>
+  <artifactId>FBP-FemiteBox-paper-1.19.2-release-ver-</artifactId>
+  <version>1.9</version>
   <packaging>jar</packaging>
 
   <name>femiteboxplugin</name>

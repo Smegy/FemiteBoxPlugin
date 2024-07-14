@@ -1,7 +1,8 @@
 smitegee\femiteboxplugin\commands\FemiteBoxPlugin.class
+smitegee\femiteboxplugin\events\customenchantments.class
 smitegee\femiteboxplugin\events\lsword.class
-smitegee\femiteboxplugin\events\icebow.class
-smitegee\femiteboxplugin\events\frostblade.class
+smitegee\femiteboxplugin\commands\fmbsee.class
+smitegee\femiteboxplugin\commands\FMBAdmin.class
 smitegee\femiteboxplugin\events\zyphorsaxe.class
 smitegee\femiteboxplugin\events\BowTNTEvent.class
 smitegee\femiteboxplugin\FMB.class
