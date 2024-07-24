@@ -23,21 +23,23 @@ public class fmbsee implements CommandExecutor {
 
         if (!p.hasPermission("femiteboxplugin.fmb.fmbsee")) return true;
 
-         if (target == null) {
-             sender.sendMessage("Player not found.");
+         if (target == null) { sender.sendMessage("Alas, the visage of Player " +target+" eludes our searching gaze, lost amid the tapestry of this digital realm.");
              return true;
          }
+
 
          if (args.length == 0) {
               sender.sendMessage("Usage: /fsee <playername> ec/inv");
               return true;
           }
 
-         if (args.length == 1 && args[1].equalsIgnoreCase("inv")) {
+         if (args.length >= 2 && args[1].equalsIgnoreCase("inv")) {
              p.openInventory(inv);
+             return true;
          }
-        if (args.length == 1 && args[1].equalsIgnoreCase("inv")) {
+        if (args.length >= 2 && args[1].equalsIgnoreCase("ec")) {
             p.openInventory(ec);
+            return true;
         }
 
         //      /fsee hráč inv/ec

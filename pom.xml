@@ -5,8 +5,8 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>smitegee</groupId>
-  <artifactId>FBP-FemiteBox-paper-1.19.2-release-ver-</artifactId>
-  <version>1.9</version>
+  <artifactId>FBP-FemiteBox-officially_paper-1.19.2-release-ver-</artifactId>
+  <version>1.9.2.2</version>
   <packaging>jar</packaging>
 
   <name>femiteboxplugin</name>
@@ -51,8 +51,8 @@
 
   <repositories>
       <repository>
-          <id>spigotmc-repo</id>
-          <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+          <id>papermc-repo</id>
+          <url>https://repo.papermc.io/repository/maven-public/</url>
       </repository>
       <repository>
           <id>sonatype</id>
@@ -62,8 +62,8 @@
 
   <dependencies>
       <dependency>
-          <groupId>org.spigotmc</groupId>
-          <artifactId>spigot-api</artifactId>
+          <groupId>io.papermc.paper</groupId>
+          <artifactId>paper-api</artifactId>
           <version>1.19.2-R0.1-SNAPSHOT</version>
           <scope>provided</scope>
       </dependency>

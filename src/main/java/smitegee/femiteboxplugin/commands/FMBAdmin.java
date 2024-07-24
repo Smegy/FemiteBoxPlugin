@@ -7,6 +7,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
+
 public class FMBAdmin implements CommandExecutor {
 
     @Override
@@ -14,21 +16,17 @@ public class FMBAdmin implements CommandExecutor {
 
 
         Player pl = (Player) sender;
+        Player player = (Player) sender;
         String pname = args[0];
         String msg = args[1];
         Player target = Bukkit.getPlayer(pname);
-
-
-
-
-       if (!pl.hasPermission("femiteboxplugin.admin")) return true;
+        ArrayList<String> msgList = new ArrayList<>();
+        if (target == null) return true;
+        if (!pl.hasPermission("femiteboxplugin.admin")) return true;
 
         if (args.length == 0) {
             sender.sendMessage(ChatColor.RED + "Usage: /fmbadmin <playername> message");
             return true;
-        }
-        if (args.length >= 1 && args[0].equalsIgnoreCase("getblock")) {
-            pl.getLocation().getBlock();
         }
 
 

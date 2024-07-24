@@ -13,18 +13,17 @@ public class zyphorsaxe implements Listener {
     @EventHandler
     public void EntityDamageEvent(EntityDamageByEntityEvent e) {
 
-        Player player = (Player) e.getEntity();
-        WitherSkeleton windicator = (WitherSkeleton) e.getDamager();
-        ItemStack item = windicator.getEquipment().getItemInMainHand();
 
-        if (windicator instanceof WitherSkeleton && player instanceof Player) {
 
-            if (item.equals(Material.NETHERITE_AXE) &&
+        if ((e.getDamager() instanceof WitherSkeleton) && (e.getEntity() instanceof Player)) return;
+            Player player = (Player) e.getEntity();
+            WitherSkeleton windicator = (WitherSkeleton) e.getDamager();
+            ItemStack item = windicator.getEquipment().getItemInMainHand();
+            if (item.getType().equals(Material.NETHERITE_AXE) &&
                     item.hasItemMeta() &&
                     item.getItemMeta().hasDisplayName() &&
                     item.getItemMeta().getDisplayName().equals(ChatColor.BLACK + "" + ChatColor.BOLD + "Zyphor's" + ChatColor.DARK_AQUA + "" + ChatColor.BOLD + " Axe")) {
 
-                player.setGlowing(true);
                 player.getWorld().createExplosion(player.getLocation(), 10);
 
                 player.getLocation().getWorld().strikeLightning(player.getLocation());
@@ -33,11 +32,6 @@ public class zyphorsaxe implements Listener {
                 player.getLocation().getWorld().strikeLightning(player.getLocation());
                 player.getLocation().getWorld().strikeLightning(player.getLocation());
             }
-
-
-
-
-
         }
     }
-}
+

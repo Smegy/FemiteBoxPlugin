@@ -1,19 +1,24 @@
 package smitegee.femiteboxplugin.events;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.block.data.BlockData;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Player;
-import org.bukkit.entity.Zombie;
+import org.bukkit.entity.*;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 public class customenchantments implements Listener {
 
 
     // Summon mob if hit (if lots enchant)
+    @EventHandler
     public void EDBEA(EntityDamageByEntityEvent e) {
 
 
@@ -25,12 +30,42 @@ public class customenchantments implements Listener {
             if (ent.getEquipment().getHelmet().getItemMeta().hasEnchant(Enchantment.LUCK)) {
 
                 //spawn 3 zombies on the damager
-                for (int i = 0; i < 3; i++) {
-                    Zombie zombie = (Zombie) ent.getWorld().spawnEntity(ent.getLocation(), EntityType.ZOMBIE);
-                    zombie.setBaby(true);
-                    zombie.setCustomName(ChatColor.RED + "Killer Zombie");
-                    zombie.setCustomNameVisible(true);
-                    ent.getWorld().playSound(ent.getLocation(), "mob.zombie.spawn", 1, 1);
+
+                ItemStack itemStack = ent.getEquipment().getItemInMainHand();
+
+                //get enchantment level
+                int enchantlvl = itemStack.getEnchantmentLevel(Enchantment.LUCK);
+
+                if (enchantlvl == 1) {
+                    for (int i = 0; i < 3; i++) {
+                        Husk zombie = (Husk) ent.getWorld().spawnEntity(ent.getLocation(), EntityType.HUSK);
+                        zombie.setBaby(true);
+                        zombie.setCustomName(ChatColor.RED + "Killer Zombie");
+                        zombie.setCustomNameVisible(true);
+                        zombie.attack(dmg);
+                    }
+                }
+
+                if (enchantlvl == 2) {
+                    for (int i = 0; i < 5; i++) {
+                        IronGolem zombie = (IronGolem) ent.getWorld().spawnEntity(ent.getLocation(), EntityType.IRON_GOLEM);
+                            zombie.setCustomName(ChatColor.RED + "Bloody Golem");
+                        zombie.setCustomNameVisible(true);
+                        zombie.attack(dmg);
+                    }
+                }
+
+                if (enchantlvl == 3) {
+                    for (int i = 0; i < 8; i++) {
+                        WitherSkeleton zombie = (WitherSkeleton) ent.getWorld().spawnEntity(ent.getLocation(), EntityType.WITHER_SKELETON);
+                        PotionEffect pot = new PotionEffect(PotionEffectType.SPEED, 10000, 3, false,false, false);
+                        zombie.addPotionEffect(pot);
+                        PotionEffect pot2 = new PotionEffect(PotionEffectType.HARM, 10000, 3, false,false, false);
+                        zombie.addPotionEffect(pot2);
+                        zombie.setCustomName(ChatColor.RED + "Killer Skeleton");
+                        zombie.setCustomNameVisible(true);
+                        zombie.attack(dmg);
+                    }
                 }
             }
         }
@@ -38,11 +73,13 @@ public class customenchantments implements Listener {
 
 
     // Mine a 3x3 area if the player has lure on thier helmet
-
+    @EventHandler
     public void BBA(BlockBreakEvent e) {
         Player player = e.getPlayer();
 
-        if (player.getEquipment().getHelmet().getItemMeta().hasEnchant(Enchantment.LURE)) {
+        if (e.getBlock().getType().equals(Material.BEDROCK)) return;
+
+        if (!player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(Enchantment.LURE) && !player.getInventory().getItemInMainHand().equals(Material.NETHERITE_PICKAXE)) return;
 
             int x = e.getBlock().getLocation().getBlockX();
             int y = e.getBlock().getLocation().getBlockY();
@@ -51,11 +88,25 @@ public class customenchantments implements Listener {
             for (int i = -1; i <= 1; i++) {
                 for (int j = -1; j <= 1; j++) {
                     for (int k = -1; k <= 1; k++) {
-                        e.getPlayer().getWorld().getBlockAt(x + i, y + j, z + k).breakNaturally();
+
+                        if (e.getPlayer().getWorld().getBlockAt(x + i, y + j, z + k).getType().equals(Material.BEDROCK)) {
+                            Bukkit.getServer().getLogger().warning("Bedrock in way");
+                            e.setCancelled(true);
+                        }
+                        //break the block and give everything to the person
+
+                        e.getPlayer().getWorld().getBlockAt(x + i, y + j, z + k).breakNaturally(player.getInventory().getItemInMainHand());
+
+                        Material bd = e.getPlayer().getWorld().getBlockAt(x + i, y + j, z + k).getType();
+
+                        if (bd.equals(Material.BEDROCK)) {
+                            Bukkit.getServer().getLogger().warning("Bedrock in way");
+                            e.setCancelled(true);
+                        }
+
                     }
                 }
             }
         }
     }
 
-}
