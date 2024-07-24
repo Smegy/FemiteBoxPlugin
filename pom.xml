@@ -6,7 +6,7 @@
 
   <groupId>smitegee</groupId>
   <artifactId>FBP-FemiteBox-officially_paper-1.19.2-release-ver-</artifactId>
-  <version>1.9.2.2</version>
+  <version>1.10</version>
   <packaging>jar</packaging>
 
   <name>femiteboxplugin</name>

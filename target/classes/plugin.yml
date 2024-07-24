@@ -1,5 +1,5 @@
 name: FemiteBox
-version: '1.9.2.2'
+version: '1.10'
 main: smitegee.femiteboxplugin.FMB
 api-version: '1.19'
 

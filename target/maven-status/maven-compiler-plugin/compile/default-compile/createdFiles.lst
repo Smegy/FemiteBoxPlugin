@@ -5,5 +5,7 @@ smitegee\femiteboxplugin\commands\fmbsee.class
 smitegee\femiteboxplugin\commands\FMBAdmin.class
 smitegee\femiteboxplugin\events\zyphorsaxe.class
 smitegee\femiteboxplugin\events\BowTNTEvent.class
+smitegee\femiteboxplugin\commands\summonmob.class
 smitegee\femiteboxplugin\events\itemtag.class
 smitegee\femiteboxplugin\FMB.class
+smitegee\femiteboxplugin\events\BlockFindingEvents.class
