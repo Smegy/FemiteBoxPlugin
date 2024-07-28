@@ -23,26 +23,35 @@ public class summonmob implements CommandExecutor {
         ItemStack itemStack = p.getInventory().getItemInMainHand();
         String itemStackName = itemStack.getItemMeta().getDisplayName();
 
-        if (!itemStackName.contains("Egg")) return true;
+        if (itemStack == null) return true;
+        if (!itemStackName.contains("Boss")) return true;
 
         //Coal Boss
         {
             if (itemStack.getItemMeta().hasDisplayName() && itemStackName.equalsIgnoreCase(ChatColor.GRAY+""+ChatColor.BOLD+"Coal Boss")) {
                 Husk zombie = (Husk) p.getWorld().spawnEntity(p.getLocation(), EntityType.HUSK);
                 EntityEquipment inv = zombie.getEquipment();
+                p.getInventory().getItemInMainHand().setType(Material.AIR);
 
                 inv.getItemInMainHand().setType(Material.NETHERITE_SWORD);
                 inv.getItemInOffHand().setType(Material.BLACK_GLAZED_TERRACOTTA);
 
+                zombie.setMaxHealth(255);
                 zombie.setHealth(250);
                 zombie.attack(p);
+                zombie.setCustomName(ChatColor.GRAY+""+ChatColor.BOLD+"Coal Boss");
+                zombie.setCustomNameVisible(true);
+                return true;
             }
 
             //Gold Boss
             if (itemStack.getItemMeta().hasDisplayName() && itemStackName.equalsIgnoreCase(ChatColor.GOLD+""+ChatColor.BOLD+"Gold Boss Egg")) {
                 Vindicator zombie = (Vindicator) p.getWorld().spawnEntity(p.getLocation(), EntityType.VINDICATOR);
                 EntityEquipment inv = zombie.getEquipment();
+                p.getInventory().getItemInMainHand().setType(Material.AIR);
 
+
+                zombie.setMaxHealth(355);
                 zombie.setHealth(350);
                 zombie.attack(p);
                 zombie.sendMessage(p.getName() + " You are DONE");
@@ -56,7 +65,10 @@ public class summonmob implements CommandExecutor {
                 inv.getLeggings().setType(Material.NETHERITE_LEGGINGS);
                 inv.getBoots().setType(Material.NETHERITE_BOOTS);
 
+                zombie.setCustomName(ChatColor.GOLD+""+ChatColor.BOLD+"Gold Boss");
+                zombie.setCustomNameVisible(true);
 
+                return true;
             }
          }
 

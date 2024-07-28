@@ -15,12 +15,16 @@ public class itemtag implements Listener {
     public void AsyncPlayEvent(AsyncChatEvent e) {
         Player p = (Player) e.getPlayer();
         Component msg = e.message();
+        //check what the msg is needed from config.yml
+        String showItemTag = Bukkit.getPluginManager().getPlugin("FemiteBoxPlugin").getConfig().getString("showItemTag");
 
-        if (msg.equals("showmedatitem")) {
+        if (msg.equals(showItemTag)) {
             e.setCancelled(true);
             ItemStack item = p.getInventory().getItemInMainHand();
-            Bukkit.getServer().broadcastMessage(p.getName() + " has shown thier item: " + item.getItemMeta().getDisplayName());
-
+            Bukkit.getServer().broadcastMessage(p.getName() + " has shown their item: " + item.getItemMeta().getDisplayName());
+        } else {
+            //do nothing if the msg is not the one needed
+            return;
         }
     }
 }

@@ -10,6 +10,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.inventory.EntityEquipment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -25,7 +26,7 @@ public class customenchantments implements Listener {
         if (e.getDamager() == (Player) e.getDamager() && e.getEntity() == (Player) e.getEntity()) {
 
             Player ent = (Player) e.getEntity();
-            Player dmg = (Player) e.getDamager();
+            Entity dmg = (Entity) e.getDamager();
 
             if (ent.getEquipment().getHelmet().getItemMeta().hasEnchant(Enchantment.LUCK)) {
 
@@ -33,10 +34,10 @@ public class customenchantments implements Listener {
 
                 ItemStack itemStack = ent.getEquipment().getItemInMainHand();
 
-                //get enchantment level
-                int enchantlvl = itemStack.getEnchantmentLevel(Enchantment.LUCK);
+                //get enchantment
 
-                if (enchantlvl == 1) {
+
+                if (ent.getEquipment().getHelmet().containsEnchantment(Enchantment.LUCK)) {
                     for (int i = 0; i < 3; i++) {
                         Husk zombie = (Husk) ent.getWorld().spawnEntity(ent.getLocation(), EntityType.HUSK);
                         zombie.setBaby(true);
@@ -46,7 +47,7 @@ public class customenchantments implements Listener {
                     }
                 }
 
-                if (enchantlvl == 2) {
+                if (ent.getEquipment().getHelmet().containsEnchantment(Enchantment.PIERCING)) {
                     for (int i = 0; i < 5; i++) {
                         IronGolem zombie = (IronGolem) ent.getWorld().spawnEntity(ent.getLocation(), EntityType.IRON_GOLEM);
                             zombie.setCustomName(ChatColor.RED + "Bloody Golem");
@@ -55,7 +56,7 @@ public class customenchantments implements Listener {
                     }
                 }
 
-                if (enchantlvl == 3) {
+                if (ent.getEquipment().getHelmet().containsEnchantment(Enchantment.VANISHING_CURSE)) {
                     for (int i = 0; i < 8; i++) {
                         WitherSkeleton zombie = (WitherSkeleton) ent.getWorld().spawnEntity(ent.getLocation(), EntityType.WITHER_SKELETON);
                         PotionEffect pot = new PotionEffect(PotionEffectType.SPEED, 10000, 3, false,false, false);
@@ -76,6 +77,8 @@ public class customenchantments implements Listener {
     @EventHandler
     public void BBA(BlockBreakEvent e) {
         Player player = e.getPlayer();
+
+        if (player.getEquipment().getItemInMainHand() == null) return;
 
         if (e.getBlock().getType().equals(Material.BEDROCK)) return;
 

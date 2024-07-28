@@ -20,9 +20,8 @@ public class zyphorsaxe implements Listener {
             WitherSkeleton windicator = (WitherSkeleton) e.getDamager();
             ItemStack item = windicator.getEquipment().getItemInMainHand();
             if (item.getType().equals(Material.NETHERITE_AXE) &&
-                    item.hasItemMeta() &&
-                    item.getItemMeta().hasDisplayName() &&
-                    item.getItemMeta().getDisplayName().equals(ChatColor.BLACK + "" + ChatColor.BOLD + "Zyphor's" + ChatColor.DARK_AQUA + "" + ChatColor.BOLD + " Axe")) {
+                    item.hasItemMeta()) {
+
 
                 player.getWorld().createExplosion(player.getLocation(), 10);
 
@@ -31,7 +30,9 @@ public class zyphorsaxe implements Listener {
                 player.getLocation().getWorld().strikeLightning(player.getLocation());
                 player.getLocation().getWorld().strikeLightning(player.getLocation());
                 player.getLocation().getWorld().strikeLightning(player.getLocation());
-            }
+            } else return;
+
         }
-    }
+}
+
 

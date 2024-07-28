@@ -127,6 +127,7 @@ public class FemiteBoxPlugin implements CommandExecutor {
             inv.setItem(12, item);
             inv.setItem(14, item2);
             inv.setItem(16, item3);
+            player.openInventory(inv);
             return true;
         }
 

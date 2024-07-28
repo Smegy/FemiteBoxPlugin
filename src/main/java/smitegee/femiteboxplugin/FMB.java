@@ -3,10 +3,7 @@ package smitegee.femiteboxplugin;
 import org.bukkit.Bukkit;
 import org.bukkit.permissions.Permission;
 import org.bukkit.plugin.java.JavaPlugin;
-import smitegee.femiteboxplugin.commands.FMBAdmin;
-import smitegee.femiteboxplugin.commands.FemiteBoxPlugin;
-import smitegee.femiteboxplugin.commands.fmbsee;
-import smitegee.femiteboxplugin.commands.summonmob;
+import smitegee.femiteboxplugin.commands.*;
 import smitegee.femiteboxplugin.events.*;
 
 public class FMB extends JavaPlugin{
@@ -39,6 +36,7 @@ public class FMB extends JavaPlugin{
         getCommand("fmbadmin").setExecutor(new FMBAdmin());
         getCommand("fmbsee").setExecutor(new fmbsee());
         getCommand("summonmob").setExecutor(new summonmob());
+        getCommand("keypad").setExecutor(new keypad());
 
 
         //Permissions
@@ -47,7 +45,14 @@ public class FMB extends JavaPlugin{
         Bukkit.getPluginManager().addPermission(new Permission("femiteboxplugin.fmb.admin.zyphorsaxe"));
         Bukkit.getPluginManager().addPermission(new Permission("femiteboxplugin.fmb.showitem"));
         Bukkit.getPluginManager().addPermission(new Permission("femiteboxplugin.admin"));
+        Bukkit.getPluginManager().addPermission(new Permission("femiteboxplugin.default"));
 
 
+        //Config
+        saveDefaultConfig();
+        getConfig().options().copyDefaults(true);
+        saveConfig();
+        reloadConfig();
+        Bukkit.getConsoleSender().sendMessage("FemiteBoxPlugin has been enabled!");
     }
 }
