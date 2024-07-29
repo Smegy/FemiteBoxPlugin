@@ -35,8 +35,8 @@ public class crafting implements CommandExecutor {
         //Lore
         List<String> lore1 = new ArrayList<>();
         lore1.add(ChatColor.GRAY + "Enchantments");
-        lore1.add(ChatColor.GOLD + "     Infinite I");
-        lore1.add(ChatColor.GOLD + "     Explosion I");
+        lore1.add(ChatColor.GREEN + "     Infinite I");
+        lore1.add(ChatColor.GREEN + "     Explosion I");
         lore1.add("");
         lore1.add("");
         lore1.add(ChatColor.GRAY + "My father gave this bow to me, said its a family tradition to give it up.");
