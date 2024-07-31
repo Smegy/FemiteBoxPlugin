@@ -10,8 +10,6 @@ import org.bukkit.entity.Husk;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Vindicator;
 import org.bukkit.inventory.EntityEquipment;
-import org.bukkit.inventory.EquipmentSlot;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
@@ -23,18 +21,23 @@ public class summonmob implements CommandExecutor {
         ItemStack itemStack = p.getInventory().getItemInMainHand();
         String itemStackName = itemStack.getItemMeta().getDisplayName();
 
+        if (p.hasPermission("femiteboxplugin.commands.default"))
         if (itemStack == null) return true;
         if (!itemStackName.contains("Boss")) return true;
 
         //Coal Boss
-        {
+
             if (itemStack.getItemMeta().hasDisplayName() && itemStackName.equalsIgnoreCase(ChatColor.GRAY+""+ChatColor.BOLD+"Coal Boss")) {
                 Husk zombie = (Husk) p.getWorld().spawnEntity(p.getLocation(), EntityType.HUSK);
                 EntityEquipment inv = zombie.getEquipment();
                 p.getInventory().getItemInMainHand().setType(Material.AIR);
 
+
                 inv.getItemInMainHand().setType(Material.NETHERITE_SWORD);
                 inv.getItemInOffHand().setType(Material.BLACK_GLAZED_TERRACOTTA);
+
+                float dropchance = inv.getItemInOffHandDropChance();
+                dropchance = 100;
 
                 zombie.setMaxHealth(255);
                 zombie.setHealth(250);
@@ -59,6 +62,9 @@ public class summonmob implements CommandExecutor {
                 inv.getItemInMainHand().setType(Material.NETHERITE_AXE);
                 inv.getItemInOffHand().setType(Material.NETHER_BRICK);
 
+                float dropchance = inv.getItemInOffHandDropChance();
+                dropchance = 100;
+
 
                 inv.getHelmet().setType(Material.NETHERITE_HELMET);
                 inv.getChestplate().setType(Material.NETHERITE_CHESTPLATE);
@@ -70,7 +76,6 @@ public class summonmob implements CommandExecutor {
 
                 return true;
             }
-         }
 
         return false;
     }

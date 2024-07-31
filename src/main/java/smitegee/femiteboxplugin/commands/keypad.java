@@ -8,7 +8,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -20,9 +19,9 @@ public class keypad implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
 
         Player player = (Player) commandSender;
-        Inventory keypad = Bukkit.createInventory(null, 3, ChatColor.AQUA+"Keypad");
+        Inventory keypad = Bukkit.createInventory(null, 9, ChatColor.AQUA+"Keypad");
 
-        if (!player.hasPermission("femiteboxplugin.default")) return true;
+        if (!player.hasPermission("femiteboxplugin.commands.default")) return true;
 
         //KEYPAD ITEMS
 

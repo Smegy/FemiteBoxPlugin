@@ -2,6 +2,7 @@ package smitegee.femiteboxplugin.events;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Arrow;
+import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.TNTPrimed;
 import org.bukkit.event.EventHandler;
@@ -13,6 +14,8 @@ public class BowTNTEvent implements Listener {
 
     @EventHandler
     public void onProjectileHit(ProjectileHitEvent event) {
+
+        if (event.getEntity() instanceof Firework) return;
         Arrow arrow = (Arrow) event.getEntity();
         Player player = (Player) arrow.getShooter();
         if (event.getEntity() instanceof Arrow) {

@@ -3,6 +3,7 @@ package smitegee.femiteboxplugin.events;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityToggleSwimEvent;
@@ -11,10 +12,8 @@ import org.bukkit.potion.PotionEffectType;
 
 public class BlockFindingEvents implements Listener {
 
-
+    @EventHandler
     public void EntityToggleSwimEvent(EntityToggleSwimEvent e) {
-        e.isSwimming();
-
         //check if it's a player and if it's swimming.
         if (e.getEntity() instanceof Player && e.isSwimming()) {
 
@@ -23,6 +22,7 @@ public class BlockFindingEvents implements Listener {
             player.addPotionEffect(potionEffect);
         }
     }
+    @EventHandler
     public void OnBlockPlace(BlockPlaceEvent e) {
         if (e.getBlock().getType().equals(Material.CRAFTING_TABLE)) {
             e.setCancelled(true);

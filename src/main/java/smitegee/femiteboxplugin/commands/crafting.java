@@ -8,6 +8,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
@@ -23,6 +24,9 @@ public class crafting implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] args) {
+
+
+
 
         // Items
         //TNTBow
@@ -50,7 +54,9 @@ public class crafting implements CommandExecutor {
 
         //Make new things (Inventories, blah blah)
         Player p = (Player) commandSender;
-        Inventory ctable = Bukkit.createInventory(null, 9, ChatColor.RED+"Crafting Table");
+        if (!p.hasPermission("femiteboxplugin.default")) return true;
+
+        Inventory ctable = Bukkit.createInventory(null, InventoryType.CRAFTING, ChatColor.RED+"Crafting Table");
         p.openInventory(ctable);
 
         //Recipes

@@ -28,7 +28,7 @@ public class customenchantments implements Listener {
             Player ent = (Player) e.getEntity();
             Entity dmg = (Entity) e.getDamager();
 
-            if (ent.getEquipment().getHelmet().getItemMeta().hasEnchant(Enchantment.LUCK)) {
+
 
                 //spawn 3 zombies on the damager
 
@@ -70,7 +70,6 @@ public class customenchantments implements Listener {
                 }
             }
         }
-    }
 
 
     // Mine a 3x3 area if the player has lure on thier helmet
@@ -82,34 +81,27 @@ public class customenchantments implements Listener {
 
         if (e.getBlock().getType().equals(Material.BEDROCK)) return;
 
-        if (!player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(Enchantment.LURE) && !player.getInventory().getItemInMainHand().equals(Material.NETHERITE_PICKAXE)) return;
+        if (!player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(Enchantment.LURE) &&
+                !player.getInventory().getItemInMainHand().getType().equals(Material.NETHERITE_PICKAXE)) return;
 
-            int x = e.getBlock().getLocation().getBlockX();
-            int y = e.getBlock().getLocation().getBlockY();
-            int z = e.getBlock().getLocation().getBlockZ();
+        int x = e.getBlock().getLocation().getBlockX();
+        int y = e.getBlock().getLocation().getBlockY();
+        int z = e.getBlock().getLocation().getBlockZ();
 
-            for (int i = -1; i <= 1; i++) {
-                for (int j = -1; j <= 1; j++) {
-                    for (int k = -1; k <= 1; k++) {
+        for (int i = -1; i <= 1; i++) {
+            for (int j = -1; j <= 1; j++) {
+                for (int k = -1; k <= 1; k++) {
+                    Material blockType = e.getPlayer().getWorld().getBlockAt(x + i, y + j, z + k).getType();
 
-                        if (e.getPlayer().getWorld().getBlockAt(x + i, y + j, z + k).getType().equals(Material.BEDROCK)) {
-                            Bukkit.getServer().getLogger().warning("Bedrock in way");
-                            e.setCancelled(true);
-                        }
-                        //break the block and give everything to the person
-
-                        e.getPlayer().getWorld().getBlockAt(x + i, y + j, z + k).breakNaturally(player.getInventory().getItemInMainHand());
-
-                        Material bd = e.getPlayer().getWorld().getBlockAt(x + i, y + j, z + k).getType();
-
-                        if (bd.equals(Material.BEDROCK)) {
-                            Bukkit.getServer().getLogger().warning("Bedrock in way");
-                            e.setCancelled(true);
-                        }
-
+                    if (blockType.equals(Material.BEDROCK)) {
+                        Bukkit.getServer().getLogger().warning("Bedrock in way");
+                        continue; // Skip breaking bedrock
                     }
+
+// Break the block and give everything to the player
+                    e.getPlayer().getWorld().getBlockAt(x + i, y + j, z + k).breakNaturally(player.getInventory().getItemInMainHand());
                 }
             }
         }
     }
-
+}

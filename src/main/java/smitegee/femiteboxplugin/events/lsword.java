@@ -27,6 +27,10 @@ public class lsword implements Listener {
             event.getRightClicked().getWorld().strikeLightning(event.getRightClicked().getLocation());
         }
 
+
+
+        //ZYPHOR
+
         if (player.getInventory().getItemInMainHand().getType().equals(Material.NETHERITE_AXE) &&
                 player.getInventory().getItemInMainHand().containsEnchantment(Enchantment.FIRE_ASPECT) && player.getInventory().getItemInMainHand().getItemMeta().hasDisplayName() &&
                 player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals(ChatColor.BLACK + "" + ChatColor.BOLD + "Zyphor's" + ChatColor.DARK_AQUA + "" + ChatColor.BOLD + " Axe")) {
