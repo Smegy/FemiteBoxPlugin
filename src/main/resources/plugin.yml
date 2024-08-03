@@ -4,26 +4,41 @@ main: smitegee.femiteboxplugin.FMB
 api-version: '1.19'
 
 commands:
+
     femiteboxplugin:
-        description: Powerful enough to get someone an item
+        description: idk
         permission: femiteboxplugin.commands.femiteboxplugin
         permission-message: Sorry! Isnt available right now
         aliases: [fbp, fmbp, fmbp2, fmb, ]
 
     fmbsee:
-        description: Powerful enough to get someone an item
+        description: idk
         permission: femiteboxplugin.commands.fmbinvsee
         permission-message: nope
         aliases: [fmbs, fmsee, fsee,seefmb]
+
     summonmob:
-            description: Powerful enough to get someone an item
+            description: idk
             permission: femiteboxplugin.commands.default
             permission-message: nope
+
     keypad:
                 description: Powerful enough to get someone an item
                 permission: femiteboxplugin.commands.default
                 permission-message: nope
+
     crafting:
                 description: Powerful enough to get someone an item
                 permission: femiteboxplugin.commands.default
                 permission-message: nope
+
+    showtitle:
+                description: Shows a title to a player
+                usage: /showtitle <player> <title> <subtitle>
+                permission: femiteboxplugin.admin.commands.showtitle
+
+    maxhp:
+                description:
+                aliases: [setmaxhp, maxhp, setmaximumhp]
+                permission-message: you are trash mister
+                permission: femiteboxplugin.admin.commands.maxhp

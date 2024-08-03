@@ -45,7 +45,7 @@ public class customenchantments implements Listener {
                         zombie.setCustomNameVisible(true);
                         zombie.attack(dmg);
                     }
-                }
+                } else return;
 
                 if (ent.getEquipment().getHelmet().containsEnchantment(Enchantment.PIERCING)) {
                     for (int i = 0; i < 5; i++) {
@@ -54,7 +54,7 @@ public class customenchantments implements Listener {
                         zombie.setCustomNameVisible(true);
                         zombie.attack(dmg);
                     }
-                }
+                } else return;
 
                 if (ent.getEquipment().getHelmet().containsEnchantment(Enchantment.VANISHING_CURSE)) {
                     for (int i = 0; i < 8; i++) {
@@ -67,8 +67,8 @@ public class customenchantments implements Listener {
                         zombie.setCustomNameVisible(true);
                         zombie.attack(dmg);
                     }
-                }
-            }
+                } else return;
+            } else return;
         }
 
 

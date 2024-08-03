@@ -15,19 +15,36 @@ public class showtitleCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        if (args.length < 3) {
-            sender.sendMessage("Usage: /showtitle <player> <title> <subtitle>");
+        if (args.length < 1) {
+            sender.sendMessage("Usage: /showtitle <player>");
             return false;
         }
 
-        Player target = Bukkit.getPlayer(args[0]);
+        Player target = null;
+
+        if (args[0].equalsIgnoreCase("@p")) {
+            if (sender instanceof Player) {
+                Player senderPlayer = (Player) sender;
+                target = senderPlayer.getWorld().getNearbyEntities(senderPlayer.getLocation(), 10, 10, 10, entity -> entity instanceof Player)
+                        .stream()
+                        .map(entity -> (Player) entity)
+                        .findFirst()
+                        .orElse(null);
+            } else {
+                sender.sendMessage("The @p option can only be used by players.");
+                return false;
+            }
+        } else {
+            target = Bukkit.getPlayer(args[0]);
+        }
+
         if (target == null) {
             sender.sendMessage("Player not found!");
             return false;
         }
 
-        Component titleText = Component.text("Teleporting to", TextColor.color(255, 255, 0)).decorate(TextDecoration.BOLD);
-        Component subtitleText = Component.text("The Nether", TextColor.color(102, 9, 9));
+        Component titleText = Component.text("Teleporting to:", TextColor.color( 247, 255, 71 )).decorate(TextDecoration.BOLD);
+        Component subtitleText = Component.text("The Nether.", TextColor.color(155, 0, 0)).decorate(TextDecoration.BOLD);
 
         Title title = Title.title(titleText, subtitleText);
 

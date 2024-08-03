@@ -6,7 +6,7 @@
 
   <groupId>smitegee</groupId>
   <artifactId>FemiteBoxPlugin-papermc-release</artifactId>
-  <version>1.10.3</version>
+  <version>1.10.5</version>
   <packaging>jar</packaging>
 
   <name>femiteboxplugin</name>
@@ -69,10 +69,5 @@
           <version>1.19.2-R0.1-SNAPSHOT</version>
           <scope>provided</scope>
       </dependency>
-<!--      <dependency>-->
-<!--          <groupId>net.kyori</groupId>-->
-<!--          <artifactId>adventure-api</artifactId>-->
-<!--          <version>4.5.0</version>-->
-<!--      </dependency>-->
   </dependencies>
 </project>

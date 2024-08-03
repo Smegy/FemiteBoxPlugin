@@ -56,34 +56,24 @@ public class crafting implements CommandExecutor {
         Player p = (Player) commandSender;
         if (!p.hasPermission("femiteboxplugin.default")) return true;
 
-        Inventory ctable = Bukkit.createInventory(null, InventoryType.CRAFTING, ChatColor.RED+"Crafting Table");
+        Inventory ctable = Bukkit.createInventory(null, 27, ChatColor.RED+"Crafting Table");
         p.openInventory(ctable);
 
         //Recipes
-        ItemStack S = new ItemStack(Material.STICK, 1);
-        ItemStack E = new ItemStack(Material.EMERALD, 1);
-        //Material A = Material.AIR;
 
-        // E S
-        // E A S
-        // E S
-        // RECIPE
-        if (ctable.getItem(0).equals(E) && ctable.getItem(3).equals(E) && ctable.getItem(6).equals(E)
-        && ctable.getItem(1).equals(S) && ctable.getItem(5).equals(S) && ctable.getItem(7).equals(S)) {
-        ctable.clear();
-        ctable.setItem(0, item);
-
-        }
-//        ctable.setItem(0, E);
-//        ctable.setItem(3, E);
-//        ctable.setItem(6, E);
-//        ctable.setItem(1, S);
-//        ctable.setItem(5, S);
-//        ctable.setItem(7, S);
-
-
-
-
+//        if (ctable.getItem(3).getType().equals(Material.EMERALD) &&
+//                ctable.getItem(12).getType().equals(Material.EMERALD) &&
+//                ctable.getItem(21).getType().equals(Material.EMERALD)) {
+//
+//            if (ctable.getItem(4).getType().equals(Material.STICK) &&
+//                    ctable.getItem(14).getType().equals(Material.STICK) &&
+//                    ctable.getItem(22).getType().equals(Material.STICK)) {
+//
+//
+//                ctable.clear();
+//                ctable.setItem(13, item);
+//            }
+//        }
 
         return false;
     }
