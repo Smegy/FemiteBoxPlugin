@@ -56,7 +56,7 @@ public class CraftingEvent implements Listener {
 
                 ctable.clear();
                 ctable.setItem(13, item);
-            }
-        }
+            } else return;
+        } else return;
     }
 }

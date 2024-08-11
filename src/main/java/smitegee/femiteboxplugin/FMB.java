@@ -2,6 +2,7 @@ package smitegee.femiteboxplugin;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickEvent;
+import net.kyori.adventure.text.event.HoverEvent;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Bukkit;
@@ -31,7 +32,6 @@ public class FMB extends JavaPlugin{
         //Events
         getServer().getPluginManager().registerEvents(new BowTNTEvent(), this);
         getServer().getPluginManager().registerEvents(new lsword(), this);
-        getServer().getPluginManager().registerEvents(new zyphorsaxe(), this);
         getServer().getPluginManager().registerEvents(new customenchantments(), this);
         getServer().getPluginManager().registerEvents(new BlockFindingEvents(), this);
 
@@ -51,7 +51,6 @@ public class FMB extends JavaPlugin{
         //Permissions
         Bukkit.getPluginManager().addPermission(new Permission("femiteboxplugin.fmb.admin.likeluckperms.menu"));
         Bukkit.getPluginManager().addPermission(new Permission("femiteboxplugin.getitem"));
-        Bukkit.getPluginManager().addPermission(new Permission("femiteboxplugin.fmb.admin.zyphorsaxe"));
         Bukkit.getPluginManager().addPermission(new Permission("femiteboxplugin.showitem"));
         Bukkit.getPluginManager().addPermission(new Permission("femiteboxplugin.admin"));
         Bukkit.getPluginManager().addPermission(new Permission("femiteboxplugin.commands.default"));
@@ -66,9 +65,9 @@ public class FMB extends JavaPlugin{
             @Override
             public void run() {
                 final Component textComponent = Component.text("")
-                        .append(Component.text("Hey! Please join our ", NamedTextColor.LIGHT_PURPLE))
+                        .append(Component.text("Hey! Please join our ", NamedTextColor.LIGHT_PURPLE).decorate(TextDecoration.BOLD))
                         .append(Component.text("Discord!", NamedTextColor.BLUE)
-                                .clickEvent(ClickEvent.openUrl("https://discord.gg/6E6EjtHHcW")).decorate(TextDecoration.BOLD));
+                                .clickEvent(ClickEvent.openUrl("https://discord.gg/6E6EjtHHcW")).decorate(TextDecoration.BOLD,TextDecoration.ITALIC));
 
 // Send the message to all online players
                 for (Player player : Bukkit.getOnlinePlayers()) {
@@ -77,4 +76,9 @@ public class FMB extends JavaPlugin{
             }
         }.runTaskTimer(this, 0, 2400);
     }
+    @Override
+    public void onDisable() {
+        Bukkit.getConsoleSender().sendMessage("FemiteBoxPlugin has been disabled!");
     }
+}
+

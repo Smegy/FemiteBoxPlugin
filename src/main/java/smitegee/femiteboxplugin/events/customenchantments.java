@@ -29,7 +29,6 @@ public class customenchantments implements Listener {
             Entity dmg = (Entity) e.getDamager();
 
 
-
                 //spawn 3 zombies on the damager
 
                 ItemStack itemStack = ent.getEquipment().getItemInMainHand();
@@ -59,9 +58,9 @@ public class customenchantments implements Listener {
                 if (ent.getEquipment().getHelmet().containsEnchantment(Enchantment.VANISHING_CURSE)) {
                     for (int i = 0; i < 8; i++) {
                         WitherSkeleton zombie = (WitherSkeleton) ent.getWorld().spawnEntity(ent.getLocation(), EntityType.WITHER_SKELETON);
-                        PotionEffect pot = new PotionEffect(PotionEffectType.SPEED, 10000, 3, false,false, false);
+                        PotionEffect pot = new PotionEffect(PotionEffectType.SPEED, 100, 3, false,false, false);
                         zombie.addPotionEffect(pot);
-                        PotionEffect pot2 = new PotionEffect(PotionEffectType.HARM, 10000, 3, false,false, false);
+                        PotionEffect pot2 = new PotionEffect(PotionEffectType.HARM, 100, 3, false,false, false);
                         zombie.addPotionEffect(pot2);
                         zombie.setCustomName(ChatColor.RED + "Killer Skeleton");
                         zombie.setCustomNameVisible(true);
@@ -78,6 +77,7 @@ public class customenchantments implements Listener {
         Player player = e.getPlayer();
 
         if (player.getEquipment().getItemInMainHand() == null) return;
+        if (player.getEquipment().getItemInMainHand().getItemMeta() == null) return;
 
         if (e.getBlock().getType().equals(Material.BEDROCK)) return;
 
