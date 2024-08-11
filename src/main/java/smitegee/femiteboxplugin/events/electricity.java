@@ -1,7 +1,10 @@
 package smitegee.femiteboxplugin.events;
 
-import jdk.javadoc.internal.doclint.HtmlTag;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.TextComponent;
+import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -18,6 +21,10 @@ public class electricity implements Listener {
         Block hb = e.getClickedBlock();
         ItemStack i = e.getItem();
         String in = i.getItemMeta().getDisplayName();
+        final TextComponent iname = Component.text("ᴘᴜʀᴇ ᴇʟᴇᴄᴛʀɪᴄɪᴛʏ", TextColor.color(248, 255, 110));
+
+        ItemStack it = new ItemStack(Material.YELLOW_DYE, 1);
+        it.editMeta(m -> m.displayName(iname));
 
 
 
@@ -27,12 +34,14 @@ public class electricity implements Listener {
 
                     if (hb.getType().equals(Material.COAL_BLOCK)) {
                         p.sendMessage("You have used your electricity");
+                        p.getInventory().removeItem(i);
+                        p.getInventory().addItem(it);
+                        p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_FLUTE, 1, 1);
                     } else return;
-
                 } else return;
             } else return;
 
-        }else return;
+        } else return;
 
     }
 }

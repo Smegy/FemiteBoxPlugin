@@ -24,7 +24,7 @@ public class FemiteBoxPlugin implements CommandExecutor {
         Player player = (Player) sender;
 
 
-        String ver = ChatColor.AQUA + " Running Version 1.10.5";
+        String ver = ChatColor.AQUA + " Running Version 1.10.6";
 
 
 //        Items
