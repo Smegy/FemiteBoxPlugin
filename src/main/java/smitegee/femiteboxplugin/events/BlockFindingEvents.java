@@ -28,7 +28,6 @@ public class BlockFindingEvents implements Listener {
             e.setCancelled(true);
             return;
         } else {
-            //shit needs to be done ngl
             return;
         }
     }

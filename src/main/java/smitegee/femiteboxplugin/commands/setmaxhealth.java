@@ -25,6 +25,7 @@ public class setmaxhealth implements CommandExecutor {
             p.sendMessage("HP Limit reached (max 200)");
             return true;
         }
+
         if (args.length >= 1 && args[0].equalsIgnoreCase("normal")) {
             p.setMaxHealth(20);
             return true;

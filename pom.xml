@@ -5,8 +5,8 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>smitegee</groupId>
-  <artifactId>FemiteBoxPlugin-papermc-release</artifactId>
-  <version>1.10.5</version>
+  <artifactId>FemiteBoxPlugin-papermc-dev</artifactId>
+  <version>0.1</version>
   <packaging>jar</packaging>
 
   <name>femiteboxplugin</name>
@@ -52,22 +52,30 @@
   </build>
 
   <repositories>
+          <repository>
+              <id>jitpack.io</id>
+              <url>https://jitpack.io</url>
+          </repository>
       <repository>
           <id>papermc-repo</id>
           <url>https://repo.papermc.io/repository/maven-public/</url>
       </repository>
-      <repository>
-          <id>sonatype</id>
-          <url>https://oss.sonatype.org/content/groups/public/</url>
-      </repository>
   </repositories>
 
   <dependencies>
+
       <dependency>
           <groupId>io.papermc.paper</groupId>
           <artifactId>paper-api</artifactId>
           <version>1.19.2-R0.1-SNAPSHOT</version>
           <scope>provided</scope>
       </dependency>
+      <dependency>
+          <groupId>com.github.Smegy</groupId>
+          <artifactId>SmiteAPI</artifactId>
+          <version>1.3</version>
+      </dependency>
+
+
   </dependencies>
 </project>

@@ -1,5 +1,5 @@
 name: FemiteBox
-version: '1.10.5'
+version: '0.1'
 main: smitegee.femiteboxplugin.FMB
 api-version: '1.19'
 
@@ -17,20 +17,7 @@ commands:
         permission-message: nope
         aliases: [fmbs, fmsee, fsee,seefmb]
 
-    summonmob:
-            description: idk
-            permission: femiteboxplugin.commands.default
-            permission-message: nope
 
-    keypad:
-                description: Powerful enough to get someone an item
-                permission: femiteboxplugin.commands.default
-                permission-message: nope
-
-    crafting:
-                description: Powerful enough to get someone an item
-                permission: femiteboxplugin.commands.default
-                permission-message: nope
 
     showtitle:
                 description: Shows a title to a player
@@ -39,6 +26,12 @@ commands:
 
     maxhp:
                 description:
-                aliases: [setmaxhp, maxhp, setmaximumhp]
+                aliases: [setmaxhp, maxhp, setmaximumhp, setmaximumhealth, ineedtosetmyhealth, ineedtosetmymaximumhealthto]
                 permission-message: you are trash mister
                 permission: femiteboxplugin.admin.commands.maxhp
+
+    nv_class:
+                  description: Gives Night Vision
+                  permission: femiteboxplugin.default
+                  permission-message: how
+                  aliases: [ night_vision, night, vision, nightvision, nv, nightv, nvision]

@@ -12,6 +12,9 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import smitegee.smiteapi.ItemHelper.ItemHelper;
+import smitegee.smiteapi.economy.EconomyManager;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +28,6 @@ public class FemiteBoxPlugin implements CommandExecutor {
 
 
         String ver = ChatColor.AQUA + " Running Version 1.10.6";
-
 
 //        Items
         ItemStack item = new ItemStack(Material.BOW, 1);
@@ -112,6 +114,7 @@ public class FemiteBoxPlugin implements CommandExecutor {
             sender.sendMessage(ChatColor.DARK_GRAY + "> Shows the item in your hand");
             sender.sendMessage(ChatColor.AQUA + "> menu1");
             sender.sendMessage(ChatColor.DARK_GRAY + "> What do you think it does?");
+            return true;
         } else {
             sender.sendMessage(ChatColor.DARK_GREEN +"[FMB]" + ver);
         }
@@ -119,8 +122,8 @@ public class FemiteBoxPlugin implements CommandExecutor {
 
 
 
-        if (args.length >= 1 && args[0].equalsIgnoreCase("menu1")) {
-            Inventory inv = Bukkit.createInventory(null, 36, "GetItem Menu");
+        if (args.length >= 1 && args[0].equalsIgnoreCase("menu")) {
+            Inventory inv = Bukkit.createInventory(null, 36, "Item Menu");
             inv.setItem(11, item);
             inv.setItem(13, item2);
             inv.setItem(15, item3);
@@ -135,7 +138,6 @@ public class FemiteBoxPlugin implements CommandExecutor {
             if (!player.hasPermission("femiteboxplugin.getitem")) return true;
 
 
-            if (args.length >= 2 && args[1].equalsIgnoreCase("weapon")) {
 
 
                 if (args.length >= 3 && args[2].equalsIgnoreCase("lsword")) {
@@ -159,25 +161,27 @@ public class FemiteBoxPlugin implements CommandExecutor {
 
                 if (args.length >= 3 && args[1].equalsIgnoreCase("weapon")) {
                     sender.sendMessage(ChatColor.DARK_GREEN +"[FMB]" + ver);
-                    sender.sendMessage(ChatColor.AQUA + "> /fbp getItem weapon lsword");
-                    sender.sendMessage(ChatColor.AQUA + "> /fbp getItem weapon tntbow");
-                    sender.sendMessage(ChatColor.AQUA + "> /fbp getItem weapon zyphor");
+                    sender.sendMessage(ChatColor.AQUA + "> /fbp getItem lsword");
+                    sender.sendMessage(ChatColor.AQUA + "> /fbp getItem tntbow");
+                    sender.sendMessage(ChatColor.AQUA + "> /fbp getItem zyphor");
 
                     return true;
                 }
-            }
-
-
-
         }
-        if (args.length >= 1 && args[0].equalsIgnoreCase("showItem") && player.hasPermission("femiteboxplugin.fmb.showitem")) {
+        if (args.length >= 1 && args[0].equalsIgnoreCase("showItem")) {
             if (!player.hasPermission("femiteboxplugin.showitem")) return true;
 
             ItemStack playeritem = player.getInventory().getItemInMainHand();
 
-            sender.sendMessage("");
-            Bukkit.broadcastMessage(ChatColor.AQUA + player.getName() + " has shown their item: " +playeritem.getItemMeta().getDisplayName());
-            return true;
+            if (playeritem.getItemMeta().getDisplayName().equals(null)) {
+                sender.sendMessage("Player"+ChatColor.AQUA+player.getName()+" has shown thier item: "+playeritem.getType());
+                return true;
+            }
+            else {
+                sender.sendMessage("");
+                Bukkit.broadcastMessage("Player"+ChatColor.AQUA + player.getName() + " has shown their item: " + playeritem.getItemMeta().getDisplayName());
+                return true;
+            }
         }
         return false;
     }

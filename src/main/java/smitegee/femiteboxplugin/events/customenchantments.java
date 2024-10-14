@@ -10,6 +10,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.inventory.EntityEquipment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
@@ -98,8 +99,56 @@ public class customenchantments implements Listener {
                         continue; // Skip breaking bedrock
                     }
 
+                    if (blockType.equals(Material.BARRIER)) {
+                        Bukkit.getServer().getLogger().warning("Barrier in way");
+                        continue; // Skip breaking bedrock
+                    }
+
 // Break the block and give everything to the player
                     e.getPlayer().getWorld().getBlockAt(x + i, y + j, z + k).breakNaturally(player.getInventory().getItemInMainHand());
+                }
+            }
+        }
+    }
+
+    @EventHandler
+    public void DropItemPick(PlayerDropItemEvent e) {
+        Player player = e.getPlayer();
+        ItemStack item = e.getItemDrop().getItemStack();
+
+        if (player.getEquipment().getItemInMainHand() == null) return;
+        if (player.getEquipment().getItemInMainHand().getItemMeta() == null) return;
+
+        if (!player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(Enchantment.RIPTIDE) &&
+                !player.getInventory().getItemInMainHand().getType().equals(Material.STONE_PICKAXE)) return;
+
+        int x = player.getLocation().getBlockX();
+        int y = player.getLocation().getBlockY();
+        int z = player.getLocation().getBlockZ();
+
+        for (int i = -3; i <= 3; i++) {
+            for (int j = -3; j <= 3; j++) {
+                for (int k = -3; k <= 3; k++) {
+                    Material blockType = e.getPlayer().getWorld().getBlockAt(x + i, y + j, z + k).getType();
+
+                    if (blockType.equals(Material.BEDROCK)) {
+                        Bukkit.getServer().getLogger().warning("Bedrock in way");
+                        continue; // Skip breaking bedrock
+                    }
+
+                    if (blockType.equals(Material.BARRIER)) {
+                        Bukkit.getServer().getLogger().warning("Barrier in way");
+                        continue; // Skip breaking bedrock
+                    }
+
+
+                    if (player.hasPermission("femiteboxplugin.admin")) {
+                            ItemStack breakAdmin = new ItemStack(Material.NETHERITE_PICKAXE, 1);
+                        e.getPlayer().getWorld().getBlockAt(x + i, y + j, z + k).breakNaturally(breakAdmin);
+                    } else {
+// Break the block and give everything to the player
+                    e.getPlayer().getWorld().getBlockAt(x + i, y + j, z + k).breakNaturally(player.getInventory().getItemInMainHand());
+                    }
                 }
             }
         }

@@ -22,9 +22,10 @@ public class fmbsee implements CommandExecutor {
         Inventory ec = target.getEnderChest();
 
 
+
         if (!p.hasPermission("femiteboxplugin.fmb.fmbsee")) return true;
 
-         if (target == null) { sender.sendMessage("Alas, the visage of Player " +target+" eludes our searching gaze, lost amid the tapestry of this digital realm.");
+         if (target == null) { sender.sendMessage("no player found :(");
              return true;
          }
 
